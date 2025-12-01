@@ -19,7 +19,7 @@ describe('AddedThread entities', () => {
       title: 'New Thread',
       owner: 12345, // Invalid type
     };
-    
+
     // Action & Assert
     expect(() => new AddedThread(payload)).toThrowError('ADDED_THREAD.NOT_MEET_DATA_TYPE_SPECIFICATION');
   });

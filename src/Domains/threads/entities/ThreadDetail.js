@@ -10,18 +10,20 @@ class ThreadDetail {
     this.comments = payload.comments;
   }
 
-  _verifyPayload({ id, title, body, date, username, comments }) {
+  _verifyPayload({
+    id, title, body, date, username, comments,
+  }) {
     if (!id || !title || !body || !date || !username || !comments) {
       throw new Error('THREAD_DETAIL.NOT_CONTAIN_NEEDED_PROPERTY');
     }
 
     if (
-      typeof id !== 'string' ||
-      typeof title !== 'string' ||
-      typeof body !== 'string' ||
-      typeof date !== 'string' ||
-      typeof username !== 'string' ||
-      !Array.isArray(comments)
+      typeof id !== 'string'
+      || typeof title !== 'string'
+      || typeof body !== 'string'
+      || typeof date !== 'string'
+      || typeof username !== 'string'
+      || !Array.isArray(comments)
     ) {
       throw new Error('THREAD_DETAIL.NOT_MEET_DATA_TYPE_SPECIFICATION');
     }

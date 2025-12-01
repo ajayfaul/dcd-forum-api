@@ -31,7 +31,7 @@ class GetThreadDetailUseCase {
           content: comment.is_delete ? '**komentar telah dihapus**' : comment.content,
           replies: mappedReplies,
         });
-      })
+      }),
     );
 
     return new ThreadDetail({

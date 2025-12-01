@@ -14,5 +14,8 @@
     "rules": {
         "no-unused-vars": "off",
         "class-methods-use-this": "off",
+        "no-undef": "off",
+        "max-len": "off",
+        "no-underscore-dangle": "off"
     }
 }

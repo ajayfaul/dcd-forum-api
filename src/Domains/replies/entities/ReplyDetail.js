@@ -8,7 +8,9 @@ class ReplyDetail {
     this.username = payload.username;
   }
 
-  _verifyPayload({ id, content, date, username }) {
+  _verifyPayload({
+    id, content, date, username,
+  }) {
     if (!id || !content || !date || !username) {
       throw new Error('REPLY_DETAIL.NOT_CONTAIN_NEEDED_PROPERTY');
     }

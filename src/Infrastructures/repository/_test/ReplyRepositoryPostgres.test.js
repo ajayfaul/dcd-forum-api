@@ -162,7 +162,7 @@ describe('ReplyRepositoryPostgres', () => {
       await UsersTableTestHelper.addUser({ id: 'user-123' });
       await ThreadsTableTestHelper.addThread({ id: 'thread-123', owner: 'user-123' });
       await CommentsTableTestHelper.addComment({ id: 'comment-123', threadId: 'thread-123', owner: 'user-123' });
-      
+
       await RepliesTableTestHelper.addReply({
         id: 'reply-1',
         commentId: 'comment-123',
@@ -170,7 +170,7 @@ describe('ReplyRepositoryPostgres', () => {
         date: '2021-08-08T08:00:00.000Z',
         content: 'First reply',
       });
-      
+
       await RepliesTableTestHelper.addReply({
         id: 'reply-2',
         commentId: 'comment-123',

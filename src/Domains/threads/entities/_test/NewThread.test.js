@@ -17,7 +17,7 @@ describe('NewThread entities', () => {
       title: 'New Thread',
       body: 12345, // Invalid type
     };
-    
+
     // Action & Assert
     expect(() => new NewThread(payload)).toThrowError('NEW_THREAD.NOT_MEET_DATA_TYPE_SPECIFICATION');
   });
