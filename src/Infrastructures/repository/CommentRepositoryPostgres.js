@@ -65,6 +65,23 @@ class CommentRepositoryPostgres extends CommentRepository {
       throw new NotFoundError('komentar tidak ditemukan');
     }
   }
+
+  async getCommentsByThreadId(threadId) {
+    const query = {
+      text: `SELECT comments.id, comments.content, comments.date, comments.is_delete, users.username
+             FROM comments
+             INNER JOIN users ON comments.owner = users.id
+             WHERE comments.thread_id = $1
+             ORDER BY comments.date ASC`,
+      values: [threadId],
+    };
+
+    const result = await this._pool.query(query);
+    return result.rows.map((row) => ({
+      ...row,
+      date: row.date.toISOString(),
+    }));
+  }
 }
 
 module.exports = CommentRepositoryPostgres;
