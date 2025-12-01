@@ -18,7 +18,6 @@ describe('AddedThread entities', () => {
       id: 'thread-123',
       title: 'New Thread',
       owner: 12345, // Invalid type
-      body: 'This is the body of the new thread.',
     };
     
     // Action & Assert
@@ -30,7 +29,6 @@ describe('AddedThread entities', () => {
     const payload = {
       id: 'thread-123',
       title: 'New Thread',
-      body: 'This is the body of the new thread.',
       owner: 'user-123',
     };
 
@@ -41,7 +39,6 @@ describe('AddedThread entities', () => {
     expect(addedThread).toBeInstanceOf(AddedThread);
     expect(addedThread.id).toEqual(payload.id);
     expect(addedThread.title).toEqual(payload.title);
-    expect(addedThread.body).toEqual(payload.body);
     expect(addedThread.owner).toEqual(payload.owner);
   });
 });
