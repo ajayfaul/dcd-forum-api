@@ -15,6 +15,6 @@ class NewThread {
       throw new Error('NEW_THREAD.NOT_MEET_DATA_TYPE_SPECIFICATION');
     }
   }
-};
+}
 
 module.exports = NewThread;
