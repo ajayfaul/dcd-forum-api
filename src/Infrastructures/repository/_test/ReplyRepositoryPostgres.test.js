@@ -187,8 +187,15 @@ describe('ReplyRepositoryPostgres', () => {
       // Assert
       expect(replies).toHaveLength(2);
       expect(replies[0].id).toEqual('reply-1');
-      expect(replies[1].id).toEqual('reply-2');
+      expect(replies[0].content).toEqual('First reply');
       expect(replies[0].username).toEqual('dicoding');
+      expect(replies[0].is_delete).toEqual(false);
+      expect(replies[0].date).toBeDefined();
+      expect(replies[1].id).toEqual('reply-2');
+      expect(replies[1].content).toEqual('Second reply');
+      expect(replies[1].username).toEqual('dicoding');
+      expect(replies[1].is_delete).toEqual(false);
+      expect(replies[1].date).toBeDefined();
     });
   });
 });

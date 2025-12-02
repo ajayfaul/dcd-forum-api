@@ -20,14 +20,14 @@ class GetThreadDetailUseCase {
         const mappedReplies = replies.map((reply) => new ReplyDetail({
           id: reply.id,
           content: reply.is_delete ? '**balasan telah dihapus**' : reply.content,
-          date: reply.date,
+          date: reply.date instanceof Date ? reply.date.toISOString() : reply.date,
           username: reply.username,
         }));
 
         return new CommentDetail({
           id: comment.id,
           username: comment.username,
-          date: comment.date,
+          date: comment.date instanceof Date ? comment.date.toISOString() : comment.date,
           content: comment.is_delete ? '**komentar telah dihapus**' : comment.content,
           replies: mappedReplies,
         });

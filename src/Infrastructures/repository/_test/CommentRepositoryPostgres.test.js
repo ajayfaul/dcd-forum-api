@@ -136,4 +136,50 @@ describe('CommentRepositoryPostgres', () => {
         .resolves.not.toThrowError(NotFoundError);
     });
   });
+
+  describe('getCommentsByThreadId function', () => {
+    it('should return empty array when no comments', async () => {
+      // Arrange
+      const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, {});
+
+      // Action
+      const comments = await commentRepositoryPostgres.getCommentsByThreadId('thread-123');
+
+      // Assert
+      expect(comments).toHaveLength(0);
+    });
+
+    it('should return all comments for a thread', async () => {
+      // Arrange
+      await UsersTableTestHelper.addUser({ id: 'user-123', username: 'dicoding' });
+      await ThreadsTableTestHelper.addThread({ id: 'thread-123', owner: 'user-123' });
+      await CommentsTableTestHelper.addComment({
+        id: 'comment-1',
+        threadId: 'thread-123',
+        owner: 'user-123',
+        content: 'First comment',
+        date: '2021-08-08T08:00:00.000Z',
+      });
+      await CommentsTableTestHelper.addComment({
+        id: 'comment-2',
+        threadId: 'thread-123',
+        owner: 'user-123',
+        content: 'Second comment',
+        date: '2021-08-08T09:00:00.000Z',
+      });
+      const commentRepositoryPostgres = new CommentRepositoryPostgres(pool, {});
+
+      // Action
+      const comments = await commentRepositoryPostgres.getCommentsByThreadId('thread-123');
+
+      // Assert
+      expect(comments).toHaveLength(2);
+      expect(comments[0].id).toEqual('comment-1');
+      expect(comments[0].username).toEqual('dicoding');
+      expect(comments[0].content).toEqual('First comment');
+      expect(comments[0].is_delete).toEqual(false);
+      expect(comments[0].date).toBeDefined();
+      expect(comments[1].id).toEqual('comment-2');
+    });
+  });
 });
