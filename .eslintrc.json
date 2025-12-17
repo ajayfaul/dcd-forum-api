@@ -1,6 +1,5 @@
 {
     "env": {
-        "browser": true,
         "es2021": true,
         "node": true
     },
@@ -12,10 +11,12 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-unused-vars": "off",
+        "no-underscore-dangle": "off",
         "class-methods-use-this": "off",
+        "linebreak-style": "off",
+        "no-unused-vars": "off",
+        "no-console": "off",
         "no-undef": "off",
-        "max-len": "off",
-        "no-underscore-dangle": "off"
+        "max-len": "off"
     }
 }
